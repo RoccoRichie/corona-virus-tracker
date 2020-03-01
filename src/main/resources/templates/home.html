@@ -1,12 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<!--Thymeleaf name space-->
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Corona Virus Tracker</title>
+    <title>Corona Virus Tracker Application</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
+
 <body>
 
-<h1>Corona Virus Tracker</h1>
+<h1>Corona Virus Tracker Application</h1>
+<p>This application lists the current number of Corona Virus cases reported acroos the globe</p>
+
+<!--<p th:text="${testName}">Place holder for model attribute from controller(Home)</p>-->
+
+<div class="jumbotron">
+    <h1 class="display-4" th:text="${totalReportedCases}">Total Cases</h1>
+    <p class="lead">Total number of cases reported as of today.</p>
+</div>
+
+<div class="container">
+    <table class="table table-hover table-striped table-bordered">
+        <caption>Current number of reported Corona Virus cases</caption>
+        <thead class="thead-dark">
+        <tr>
+            <th>State</th>
+            <th>Country</th>
+            <th>Total Cases Reported</th>
+        </tr>
+        <tr th:each="locationStat : ${locationStats}">
+            <td th:text="${locationStat.country}">No Country</td>
+            <td th:text="${locationStat.state}">No Sate</td>
+            <td th:text="${locationStat.latestTotalCases}">0</td>
+        </tr>
+    </table>
+</div>
 
 </body>
+
 </html>

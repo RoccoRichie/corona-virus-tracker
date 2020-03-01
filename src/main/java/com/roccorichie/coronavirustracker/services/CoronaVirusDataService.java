@@ -22,7 +22,12 @@ public class CoronaVirusDataService {
 
     private static String VIRUS_DATA_URL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv";
 
+
     private List<LocationStats> allStats = new ArrayList<>();
+
+    public List<LocationStats> getAllStats() {
+        return allStats;
+    }
 
     //Execute this at start - When you construct an instance of this class, execute this method
     // Scheduler runs as a cron say every day
@@ -51,10 +56,8 @@ public class CoronaVirusDataService {
             LocationStats locationStats = new LocationStats();
             locationStats.setState(record.get("Province/State"));
             locationStats.setCountry(record.get("Country/Region"));
-            locationStats.setLatestTotalCases(Integer.parseInt(record.get(record.size() -1)));
+            locationStats.setLatestTotalCases(Integer.parseInt(record.get(record.size() - 1)));
 
-            // Print locationStat
-            System.out.println(locationStats);
             newStats.add(locationStats);
         }
         this.allStats = newStats; // Attempting to be concurrent capable
