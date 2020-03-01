@@ -7,9 +7,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
 import java.io.StringReader;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -59,6 +57,6 @@ public class CoronaVirusDataService {
             System.out.println(locationStats);
             newStats.add(locationStats);
         }
-        this.allStats = newStats;
+        this.allStats = newStats; // Attempting to be concurrent capable
     }
 }
