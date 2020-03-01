@@ -29,11 +29,13 @@
             <th>State</th>
             <th>Country</th>
             <th>Total Cases Reported</th>
+            <th>Changes since last day</th>
         </tr>
         <tr th:each="locationStat : ${locationStats}">
             <td th:text="${locationStat.country}">No Country</td>
             <td th:text="${locationStat.state}">No Sate</td>
             <td th:text="${locationStat.latestTotalCases}">0</td>
+            <td th:text="${locationStat.diffFromPreviousDay}">0</td>
         </tr>
     </table>
 </div>
