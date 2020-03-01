@@ -14,20 +14,49 @@
 <div class="container">
 
     <h1>Corona Virus Tracker Application</h1>
-    <p>This application lists the current number of Corona Virus cases reported acroos the globe</p>
+    <p>This application lists the current number of Corona Virus Cases & Deaths reported across the globe</p>
 
     <!--<p th:text="${testName}">Place holder for model attribute from controller(Home)</p>-->
 
     <div class="jumbotron">
         <h1 class="display-4" th:text="${totalReportedCases}">Total Cases</h1>
         <p class="lead">Total number of cases reported as of today.</p>
+
+        <h1 class="display-4" th:text="${totalDeathCases}">Total Cases</h1>
+        <p class="lead">Total number of deaths reported as of today.</p>
         <hr class="my-4">
         <p>
             <span>New Cases reported since previous day</span>
             <span class="lead" th:text="${totalNewCases}">Total new reported cases</span>
         </p>
+        <p>
+            <span>New Deaths reported since previous day</span>
+            <span class="lead" th:text="${totalNewDeathCases}">Total new Deaths reported</span>
+        </p>
     </div>
 
+    <h3 class="display-4">Total Deaths Reported</h3>
+
+    <table class="table table-hover table-striped table-bordered">
+        <caption>Current number of reported Deaths from Corona Virus</caption>
+        <thead class="thead-dark">
+        <tr>
+            <th>Country</th>
+            <th>State</th>
+            <th>Total Cases Reported</th>
+            <th>Changes since last day</th>
+        </tr>
+        <tr th:each="deathStat : ${deathStats}">
+            <td th:text="${deathStat.country}">No Country</td>
+            <td th:text="${deathStat.state}">No Sate</td>
+            <td th:text="${deathStat.latestTotalCases}">0</td>
+            <td th:text="${deathStat.diffFromPreviousDay}">0</td>
+        </tr>
+    </table>
+
+    <br>
+
+    <h3 class="display-4">Total Cases Reported</h3>
 
     <table class="table table-hover table-striped table-bordered">
         <caption>Current number of reported Corona Virus cases</caption>
@@ -45,6 +74,7 @@
             <td th:text="${locationStat.diffFromPreviousDay}">0</td>
         </tr>
     </table>
+
 </div>
 
 </body>
