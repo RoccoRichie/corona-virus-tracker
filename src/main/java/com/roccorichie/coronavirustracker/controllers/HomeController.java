@@ -22,9 +22,11 @@ public class HomeController {
 //        model.addAttribute("testName", "TEST");
         List<LocationStats> allStats = coronaVirusDataService.getAllStats();
         int totalReportedCases = allStats.stream().mapToInt(stat -> stat.getLatestTotalCases()).sum();
+        int totalNewCases = allStats.stream().mapToInt(stat -> stat.getDiffFromPreviousDay()).sum();
 //        model.addAttribute("locationStats", coronaVirusDataService.getAllStats());
         model.addAttribute("locationStats", allStats);
         model.addAttribute("totalReportedCases", totalReportedCases);
+        model.addAttribute("totalNewCases", totalNewCases);
         return "home"; // map to a html file called home.html
     }
 

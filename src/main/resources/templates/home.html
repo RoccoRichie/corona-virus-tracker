@@ -11,23 +11,30 @@
 
 <body>
 
-<h1>Corona Virus Tracker Application</h1>
-<p>This application lists the current number of Corona Virus cases reported acroos the globe</p>
-
-<!--<p th:text="${testName}">Place holder for model attribute from controller(Home)</p>-->
-
-<div class="jumbotron">
-    <h1 class="display-4" th:text="${totalReportedCases}">Total Cases</h1>
-    <p class="lead">Total number of cases reported as of today.</p>
-</div>
-
 <div class="container">
+
+    <h1>Corona Virus Tracker Application</h1>
+    <p>This application lists the current number of Corona Virus cases reported acroos the globe</p>
+
+    <!--<p th:text="${testName}">Place holder for model attribute from controller(Home)</p>-->
+
+    <div class="jumbotron">
+        <h1 class="display-4" th:text="${totalReportedCases}">Total Cases</h1>
+        <p class="lead">Total number of cases reported as of today.</p>
+        <hr class="my-4">
+        <p>
+            <span>New Cases reported since previous day</span>
+            <span class="lead" th:text="${totalNewCases}">Total new reported cases</span>
+        </p>
+    </div>
+
+
     <table class="table table-hover table-striped table-bordered">
         <caption>Current number of reported Corona Virus cases</caption>
         <thead class="thead-dark">
         <tr>
-            <th>State</th>
             <th>Country</th>
+            <th>State</th>
             <th>Total Cases Reported</th>
             <th>Changes since last day</th>
         </tr>
