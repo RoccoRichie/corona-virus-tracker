@@ -22,7 +22,7 @@ public class HomeController {
 
     // Return the home template - thymeleaf dependency
     @GetMapping("/")
-    public String home(Model model){
+    public String home(Model model) {
         // Cases Reported
         List<LocationStats> allStats = coronaVirusDataService.getAllStats();
         int totalReportedCases = allStats.stream().mapToInt(stat -> stat.getLatestTotalCases()).sum();
